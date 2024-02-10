@@ -1,0 +1,3 @@
+bigQuery:
+  projectId: quary-analytics
+  datasetId: transform
