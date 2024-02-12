@@ -4,7 +4,7 @@ WITH deployment_counts AS (
     repository_name,
     COUNT(*) AS deployments
   FROM
-      q.stg_raw_workflow_runs
+      q.stg_workflow_runs
   WHERE
     conclusion = 'success'
     AND head_branch = 'main'
