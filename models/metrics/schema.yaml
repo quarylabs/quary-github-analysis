@@ -1,0 +1,9 @@
+models:
+- name: deployment_frequency
+  columns:
+  - name: deployments
+    description: The number of deployments
+  - name: deployment_date
+    description: The timestamp of the last update to the workflow run.
+  - name: repository_name
+    description: The name of the GitHub repository associated with the workflow run.
