@@ -1,0 +1,25 @@
+models:
+- name: pull_requests_time_to_close
+  columns:
+  - name: id
+    description: The pull request identifier.
+  - name: state
+    description: The pull request state, either closed or open.
+  - name: title
+    description: The pull request title.
+  - name: created_at
+    description: The time the pull request was created.
+  - name: updated_at
+    description: The time the pull request was last updated.
+  - name: closed_at
+    description: The time the pull request was closed.
+    tests:
+    - type: not_null
+  - name: merged_at
+    description: The time the pull request was merged.
+  - name: repository
+    description: The pull request repository.
+  - name: author
+    description: The author of the pull request.
+  - name: time_to_close_hours
+    description: The time taken to close a pull request.

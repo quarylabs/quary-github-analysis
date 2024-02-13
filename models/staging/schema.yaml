@@ -431,6 +431,24 @@ sources:
       - name: state
       - name: updated_at
       - name: url
+  - name: raw_commits
+    path: quary-analytics.airbyte_github.commits
+    columns:
+      - name: _airbyte_extracted_at
+      - name: _airbyte_meta
+      - name: _airbyte_raw_id
+      - name: author
+      - name: branch
+      - name: comments_url
+      - name: commit
+      - name: committer
+      - name: created_at
+      - name: html_url
+      - name: node_id
+      - name: parents
+      - name: repository
+      - name: sha
+      - name: url
 models:
   - name: stg_workflow_runs
     description: Staging table defining the GitHub Actions workflow runs, detailing each run's initiation, completion, status, and outcome within the organisation's CI/CD process.
@@ -447,10 +465,6 @@ models:
         description: The current status for the workflow run.
       - name: conclusion
         description: The outcome of the workflow run.
-        tests:
-          - type: accepted_values
-            info:
-              values: success, cancelled, startup_failure, failure
       - name: event
         description: The type of event that triggered the workflow run.
       - name: head_branch
@@ -465,3 +479,49 @@ models:
         description: The unique identifier (SHA) of the most recent commit in the branch at the time the workflow run was triggered.
       - name: head_commit_timestamp
         description: ": The timestamp of the most recent commit that triggered the workflow run, providing a precise moment when the code changes were made. "
+  - name: stg_pull_requests
+    description: Raw Pull Requests coming from Github.
+    columns:
+      - name: id
+        description: The pull request identifier.
+        tests:
+          - type: unique
+          - type: not_null
+      - name: state
+        description: The pull request state, either closed or open.
+        tests:
+          - type: accepted_values
+            info:
+              values: closed,open
+      - name: title
+        description: The pull request title.
+      - name: created_at
+        description: The time the pull request was created.
+      - name: updated_at
+        description: The time the pull request was last updated.
+      - name: closed_at
+        description: The time the pull request was closed.
+      - name: merged_at
+        description: The time the pull request was merged.
+      - name: repository
+        description: The pull request repository.
+      - name: author
+        description: The author of the pull request.
+  - name: stg_commits
+    description: Replace this with your description for commits
+    columns:
+      - name: _airbyte_extracted_at
+      - name: _airbyte_meta
+      - name: _airbyte_raw_id
+      - name: author
+      - name: branch
+      - name: comments_url
+      - name: commit
+      - name: committer
+      - name: created_at
+      - name: html_url
+      - name: node_id
+      - name: parents
+      - name: repository
+      - name: sha
+      - name: url

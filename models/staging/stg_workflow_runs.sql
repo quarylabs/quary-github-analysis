@@ -11,5 +11,6 @@ SELECT
     workflow_id,
     JSON_VALUE(head_commit, '$.id') AS head_commit_id,
     JSON_VALUE(head_commit, '$.timestamp') AS head_commit_timestamp,
+    
 FROM
     q.raw_workflow_runs
